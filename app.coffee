@@ -79,6 +79,7 @@ app.post '/notify/:id', (req, res) -> # receive the webhook, we got a new photo!
 
 app.get '/add/:tagname', (req, res) -> # 
 	console.log 'Notification for', req.params.tagname
+	last_set = []
 	tagName = req.params.tagname	
 	res.send 'OK LISTENING... ' + req.params.tagname
 	
