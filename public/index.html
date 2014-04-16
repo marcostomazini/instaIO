@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>InstaIO: Instagram photos based in InstaO</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="app.css">
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular-sanitize.min.js"></script>
+	<script src="app.js"></script>
+
+</head>
+
+<body ng-app>
+	
+	<header>
+		<h3>InstaIO</h3>
+		<p>The real-time feed of Instagram for ballads and events. Monitored by ArquitetaWeb.</p>
+	</header>
+
+	<div class="main">
+	<div ng-controller="PhotoCtrl">  
+		<section class="photo" ng-repeat="photo in photos | orderBy: byCreatedTime">
+			<a href="{{photo.link}}">
+				<img src="{{photo.images.low_resolution.url}}"></img>
+			</a>
+			<time>{{photo.isoTime}}</time>
+			<p class="caption">{{photo.caption.text}}</p>
+		</section>      
+	</div>
+	</div><!-- .main -->
+
+	<footer>
+		Credits <a href="http://twitter.com/ivarvong">@ivarvong</a>.
+	</footer>
+
+</body>
+</html>
