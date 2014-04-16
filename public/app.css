@@ -43,8 +43,15 @@ header p {
 }
 
 footer {
-	border-top: 1px solid #CCC;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
 	padding: 10px;
 	font-size: 12px;
-	background: #FCFCFC;
+	background: #B1ADAD;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+}
+
+.foot {
+	font-size: 12px;
 }
