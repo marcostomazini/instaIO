@@ -80,12 +80,12 @@ app.post '/notify/:id', (req, res) -> # receive the webhook, we got a new photo!
 app.get '/add/:tagname', (req, res) -> # 
 	console.log 'Notification for', req.params.tagname
 	tagName = req.params.tagname	
-	res.send 'OK'
+	res.send 'OK LISTENING ...', req.params.tagname
 	
 app.get '/clear', (req, res) -> # delete array
 	console.log 'clear'
 	last_set = []
-	res.send 'OK'
+	res.send 'CLEAR'
 	
 #update_geo_media('1615218')
 update_tag_media(tagName)
