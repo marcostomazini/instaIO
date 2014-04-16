@@ -3,7 +3,7 @@ app = express()
 server = app.listen(process.env.PORT || 5000)
 io = require('socket.io').listen(server)
 instagram = require './instagram'
-tagName = 'maringa' # arquitetaweb maringa
+tagName = 'sampa' # arquitetaweb maringa
 last_set = []
 
 app.configure ->
@@ -53,8 +53,7 @@ update_tag_media = (object_id) ->
 		#console.log('tag', data)
 
 update_geo_media = (object_id) ->
-	console.log('update_geo_media 1')
-	console.log('teste', object_id)
+	console.log('update_geo_media')
 	instagram.getGeoMedia object_id, (err, data) ->
 		console.log('update_geo_media err', err)
 		for photo in data.data
@@ -77,14 +76,23 @@ app.post '/notify/:id', (req, res) -> # receive the webhook, we got a new photo!
 		update_geo_media(notification.object_id) if notification.object is "geography"	        
 	res.send 'OK'
 
+
+app.get '/add/:tagname', (req, res) -> # 
+	console.log 'Notification for', req.params.tagname
+	tagName = req.params.tagname	
+	res.send 'OK'
+	
+app.get '/clear', (req, res) -> # delete array
+	console.log 'clear'
+	last_set = []
+	res.send 'OK'
+	
 #update_geo_media('1615218')
 update_tag_media(tagName)
-#update_tag_media('arquitetaweb')
 
 setInterval ->
 	#console.log(last_set.length, "last_set length")
 	#update_geo_media('3503334')
-	#update_tag_media('arquitetaweb')
 	update_tag_media(tagName)
 , 5000
 
