@@ -3,7 +3,7 @@ app = express()
 server = app.listen(process.env.PORT || 5000)
 io = require('socket.io').listen(server)
 instagram = require './instagram'
-tagName = 'arquitetaweb' # instalove arquitetaweb maringa
+tagName = 'maringa' # instalove arquitetaweb maringa
 last_set = []
 
 app.configure ->
@@ -43,6 +43,7 @@ insert_if_new = (photo) ->
 		last_set.push photo
 		io.sockets.emit 'new', photo
 	else
+		#last_set.splice photo
 		console.log("- NOT new: #{photo.id}")
 
 update_tag_media = (object_id) ->

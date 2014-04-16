@@ -20,9 +20,12 @@ function PhotoCtrl($scope) {
 	});	
 
 	$scope.socket.on('new', function(photo) {
-		//console.log('new', photo);
+		//console.log('new', photo);	
+		//$scope.photos.pop();
+		//$scope.photos.slice(1, -1);
+		$scope.photos.shift();
 		$scope.$apply(function(scope){			
-			scope.photos.push(photo);
+			scope.photos.push(photo);			
 		});
 	});
 
