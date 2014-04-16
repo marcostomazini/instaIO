@@ -3,7 +3,7 @@ app = express()
 server = app.listen(process.env.PORT || 5000)
 io = require('socket.io').listen(server)
 instagram = require './instagram'
-tagName = 'sampa' # arquitetaweb maringa
+tagName = 'instalove' # arquitetaweb maringa
 last_set = []
 
 app.configure ->
