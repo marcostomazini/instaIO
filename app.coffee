@@ -83,6 +83,10 @@ app.post '/notify/:id', (req, res) -> # receive the webhook, we got a new photo!
 app.get '/one', (req, res) -> # 
 	res.sendfile './public/one.html'
 
+app.get '/barracauniversitaria', (req, res) -> # 
+	tagName = 'barracauniversitariaoriginal2014'	
+	res.sendfile './public/maringafm.html'
+
 app.get '/maringafm', (req, res) -> # 
 	tagName = 'maringafm'	
 	res.sendfile './public/maringafm.html'
