@@ -1,0 +1,37 @@
+<!-- index.html -->
+<!doctype html>
+
+<header><!-- banner, nav bar, etc --></header>
+
+<section ng-view=""></section>
+
+<script id="postList.html" type="text/ng-template">
+  <h2>Post List Page</h2>
+  <div class="post-preview" ng-repeat="post in posts">
+    <a class="post-title" href="/post/{{post.post_id}}">
+      {{post.post_title}}
+    </a>
+    <span class="post-details">
+      Authored by {{post.author}} on {{post.date}}
+    </span>
+  </div>
+</script>
+
+<script type="text/ng-template" id="postShow.html">
+  <h2>{{post.post_title}}</h2>
+  <div ng-bind-html-unsafe="post.post_body"></div>
+</script>
+
+<script id="postAdd.html" type="text/ng-template">
+  <h2>Add New Post</h2>
+  <form>
+    <label>Title</label>
+    <input type="text" name="post_title" ng-model="post_title"/>
+    <label>Body</label>
+    <textarea type="text" name="post_body" ng-model="post_body"></textarea>
+    <button ng-click="submitPost()">Add Post</button>
+  </form>
+</script>
+<script id="postEdit.html" type="text/ng-template">
+  <!-- etc, etc -->
+</script>

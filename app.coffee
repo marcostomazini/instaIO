@@ -8,7 +8,7 @@ last_set = []
 
 process.env.CLIENT_ID = '464ed34dfbb2461584b9b7667128b6e3'
 process.env.CLIENT_SECRET = 'de3e0b55b80b4ac49a04f72153ef3ced'	
-tagName = 'instalove' # instalove arquitetaweb maringa
+tagName = 'maringa' # instalove arquitetaweb maringa
 
 app.configure ->
 	app.set 'views', __dirname + '/views'
@@ -80,8 +80,12 @@ app.post '/notify/:id', (req, res) -> # receive the webhook, we got a new photo!
 		update_geo_media(notification.object_id) if notification.object is "geography"	        
 	res.send 'OK'
 
-app.get '/teste', (req, res) -> # 
-	res.render 'public/one'
+app.get '/one', (req, res) -> # 
+	res.sendfile './public/one.html'
+
+app.get '/maringafm', (req, res) -> # 
+	tagName = 'maringafm'	
+	res.sendfile './public/one.html'
 	
 app.get '/add/:tagname', (req, res) -> # 
 	console.log 'Notification for', req.params.tagname
