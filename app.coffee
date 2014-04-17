@@ -85,7 +85,7 @@ app.get '/one', (req, res) -> #
 
 app.get '/maringafm', (req, res) -> # 
 	tagName = 'maringafm'	
-	res.sendfile './public/one.html'
+	res.sendfile './public/maringafm.html'
 	
 app.get '/add/:tagname', (req, res) -> # 
 	console.log 'Notification for', req.params.tagname
