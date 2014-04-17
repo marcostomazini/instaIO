@@ -3,8 +3,12 @@ app = express()
 server = app.listen(process.env.PORT || 5000)
 io = require('socket.io').listen(server)
 instagram = require './instagram'
-tagName = 'maringa' # instalove arquitetaweb maringa
+
 last_set = []
+
+process.env.CLIENT_ID = '464ed34dfbb2461584b9b7667128b6e3'
+process.env.CLIENT_SECRET = 'de3e0b55b80b4ac49a04f72153ef3ced'	
+tagName = 'instalove' # instalove arquitetaweb maringa
 
 app.configure ->
 	app.set 'views', __dirname + '/views'
@@ -12,8 +16,6 @@ app.configure ->
 	app.use express.static(__dirname + "/public")
 	app.use express.bodyParser()
 	app.use express.cookieParser()
-	process.env.CLIENT_ID = '464ed34dfbb2461584b9b7667128b6e3'
-	process.env.CLIENT_SECRET = 'de3e0b55b80b4ac49a04f72153ef3ced'	
 
 io.set('log level', 1)
 
@@ -44,6 +46,7 @@ insert_if_new = (photo) ->
 		io.sockets.emit 'new', photo
 	else
 		#last_set.splice photo
+		io.sockets.emit 'random', photo
 		console.log("- NOT new: #{photo.id}")
 
 update_tag_media = (object_id) ->
@@ -77,7 +80,9 @@ app.post '/notify/:id', (req, res) -> # receive the webhook, we got a new photo!
 		update_geo_media(notification.object_id) if notification.object is "geography"	        
 	res.send 'OK'
 
-
+app.get '/teste', (req, res) -> # 
+	res.render 'public/one'
+	
 app.get '/add/:tagname', (req, res) -> # 
 	console.log 'Notification for', req.params.tagname
 	last_set = []
@@ -96,7 +101,7 @@ setInterval ->
 	#console.log(last_set.length, "last_set length")
 	#update_geo_media('3503334')
 	update_tag_media(tagName)
-, 5000
+, 15000
 
 setTimeout ->
 	io.sockets.emit 'reload', ''

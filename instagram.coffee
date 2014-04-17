@@ -10,7 +10,7 @@ exports.getGeographyMediaRequest = (geographyID) ->
     "https://api.instagram.com/v1/geographies/#{geographyID}/media/recent?client_id=#{process.env.CLIENT_ID}"
 
 exports.getTagMediaRequest = (tag_name) ->
-    "https://api.instagram.com/v1/tags/#{tag_name}/media/recent?client_id=#{process.env.CLIENT_ID}&max_id=3&min_id=2"
+    "https://api.instagram.com/v1/tags/#{tag_name}/media/recent?client_id=#{process.env.CLIENT_ID}" # "https://api.instagram.com/v1/tags/#{tag_name}/media/recent?client_id=#{process.env.CLIENT_ID}&count=3"
   
 exports.listSubscriptions = (callback) ->
   requestObj = {

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>InstaIO: Instagram photos based in InstaO</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="appOne.css">
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular-sanitize.min.js"></script>
+	<script src="appOne.js"></script>
+
+</head>
+
+<body ng-app>
+
+	<div class="main">
+	<div ng-controller="PhotoCtrl">  
+		
+		<section class="photo">
+			<a href="{{photos[0].link}}">
+				<!--<img src="{{photo.images.standard_resolution.url}}"></img>-->
+				<img src="{{photos[0].images.low_resolution.url}}"></img>
+			</a>
+			<time>{{photos[0].isoTime}}</time>
+		</section> 
+	</div>
+	</div><!-- .main -->
+
+	<footer>
+		<div class="foot" ng-controller="PhotoCtrl"> 
+			<p class="caption">{{photos[0].caption.text}}</p>
+		</div> 
+	</footer>
+
+	<script type="text/javascript">
+		launchFullscreen = function(element) {
+		  if(element.requestFullscreen) {
+			element.requestFullscreen();
+		  } else if(element.mozRequestFullScreen) {
+			element.mozRequestFullScreen();
+		  } else if(element.webkitRequestFullscreen) {
+			element.webkitRequestFullscreen();
+		  } else if(element.msRequestFullscreen) {
+			element.msRequestFullscreen();
+		  }
+		}
+
+		launchFullScreen(document.documentElement); // the whole page
+	</script>
+</body>
+</html>
