@@ -23,10 +23,8 @@
 	<div ng-controller="PhotoCtrl">  
 		
 		<section class="photo">
-			<a href="{{photos[0].link}}">
-				<!--<img src="{{photo.images.standard_resolution.url}}"></img>-->
-				<img src="{{photos[0].images.low_resolution.url}}"></img>
-			</a>
+			<!--<img src="{{photo.images.standard_resolution.url}}"></img>-->
+			<img src="{{photos[0].images.low_resolution.url}}"></img>
 			<time>{{photos[0].isoTime}}</time>
 		</section> 
 	</div>
@@ -34,7 +32,9 @@
 
 	<footer>
 		<div class="foot" ng-controller="PhotoCtrl"> 
-			<p class="caption">{{photos[0].caption.text}}</p>
+			<a href="{{photos[0].link}}">
+				<p class="caption">{{photos[0].caption.text}}</p>
+			</a>
 		</div> 
 	</footer>
 
