@@ -1,4 +1,4 @@
-express = require('express')
+﻿express = require('express')
 app = express()
 server = app.listen(process.env.PORT || 5000)
 io = require('socket.io').listen(server)
@@ -85,7 +85,7 @@ app.get '/one', (req, res) -> #
 
 app.get '/maringafm', (req, res) -> # 
 	tagName = 'maringafm'	
-	res.sendfile './public/maringafm.html'
+	res.sendfile './public/one.html'
 	
 app.get '/add/:tagname', (req, res) -> # 
 	console.log 'Notification for', req.params.tagname
