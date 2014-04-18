@@ -1,0 +1,154 @@
+body {
+  background-color: #000;
+  background-image: url(images/texture.jpg), url(images/banner.png);
+  background-position: center center, center top;
+  background-repeat: repeat, no-repeat;
+}
+
+.photo {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.photo img {
+	width: 100%;
+	height: 93%;
+	cursor:none;
+}
+
+.caption {
+	font-size: 12px;
+}
+
+footer {
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+	padding-left: 10px;
+	font-size: 12px;
+	background: #7E88AB;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+}
+
+footer a:link {
+	text-decoration: none;
+	font-size: 12px;
+	color: #FFFFFF;
+	font-weight:bold;
+}
+
+footer a:active {
+	text-decoration: none;
+	font-size: 12px;
+	color: #FFFFFF;
+	font-weight:bold;
+}
+
+footer a:visited {
+	text-decoration: none;
+	font-size: 12px;
+	color: #FFFFFF;
+	font-weight:bold;
+}
+
+footer a:hover {
+	text-decoration: none;
+	font-size: 12px;
+	color: #FFFFFF;
+	font-weight:bold;
+}
+
+.foot {
+	font-size: 12px;
+}
+
+@media screen and (min-width: 640px) {
+	.photo {
+		width: 640px;
+		height: 640px;
+		overflow: hidden;
+		margin: 0 auto;
+	}
+	.photo img {
+		width: 100%;
+		height: 100%;
+		cursor:none;
+	}
+	
+	body {
+		background-color: #000;
+		background-image: url(images/texture600.jpg), url(images/banner.png);
+		background-position: center center, center top;
+		background-repeat: repeat, no-repeat;
+	}
+}
+
+@media screen and (min-width: 800px) {
+	.photo {
+		width: 640px;
+		height: 640px;
+		overflow: hidden;
+		margin: 0 auto;
+	}
+	.photo img {
+		width: 100%;
+		height: 100%;
+		cursor:none;
+	}
+	
+	body {
+		background-color: #000;
+		background-image: url(images/texture800.jpg), url(images/banner.png);
+		background-position: center center, center top;
+		background-repeat: repeat, no-repeat;
+	}
+}
+
+@media screen and (min-width: 1366px) {
+	.photo {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	.photo img {
+		width: 100%;
+		height: 93%;
+		cursor:none;
+	}
+}
+@media screen and (min-width: 1440px) {
+    .photo {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	.photo img {
+		width: 100%;
+		height: 93%;
+		cursor:none;
+	}
+}
+@media screen and (min-width: 1600px) {
+    .photo {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	.photo img {
+		width: 100px;
+		height: 100px;
+		cursor:none;
+	}
+}
+@media screen and (min-width: 1920px) {
+    .photo {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	.photo img {
+		width: 100px;
+		height: 100px;
+		cursor:none;
+	}
+}

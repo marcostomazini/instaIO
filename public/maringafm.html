@@ -7,27 +7,27 @@
 
 
 	<link rel="stylesheet" href="normalize.css">
-	<link rel="stylesheet" href="appOne.css">
+	<link rel="stylesheet" href="maringafm.css">
 
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular-sanitize.min.js"></script>
-	<script src="appOne.js"></script>
+	<script src="maringafm.js"></script>
 
 </head>
 
 <body ng-app>
 
 	<div class="main">
-	<div ng-controller="PhotoCtrl">  
-		
-		<section class="photo">
-			<!--<img src="{{photo.images.standard_resolution.url}}"></img>-->
-			<img src="{{photos[0].images.low_resolution.url}}"></img>
-			<time>{{photos[0].isoTime}}</time>
-		</section> 
-	</div>
+		<div ng-controller="PhotoCtrl">  
+			
+			<section class="photo">
+				<!--<img src="{{photo.images.standard_resolution.url}}"></img>-->
+				<img src="{{photos[0].images.low_resolution.url}}"></img>
+				<time>{{photos[0].isoTime}}</time>
+			</section> 
+		</div>
 	</div><!-- .main -->
 
 	<footer>
