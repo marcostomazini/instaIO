@@ -30,9 +30,10 @@
 				<div class="photos">
 					<img ng-src="{{photo.images.thumbnail.url}}"></img>
 					<!--<time>{{photo.created_time}}</time>-->
+					<a class="btn" ng-click="remove(photo)">Delete</a>
 					<a ng-href="{{photo.link}}">
 						<p class="caption">{{photo.caption.text}}</p>
-					</a>
+					</a>					
 				</div>			
 					<div class="avatar" title="{{photo.user.full_name}}">
 						<a ng-href="http://www.instagram.com/{{photo.user.username}}">											

@@ -26,6 +26,15 @@ io.configure ->
 
 io.on 'connection', (socket) ->
 	socket.emit 'bootstrap', last_set
+	socket.on 'array new', (photo) ->
+		#last_set.splice(photo, 1);  
+		index = last_set.indexOf(photo)
+		console.log("Remover ou gravar no banco ", index)
+		console.log(last_set.length)
+		last_set.splice(index, 1); 
+		console.log(last_set.length)		
+		console.log("Remover ou gravar no banco ", photo.id)
+		io.sockets.emit 'bootstrap', last_set
 
 app.get '/stats', (req, res) ->
 	res.json process.memoryUsage()

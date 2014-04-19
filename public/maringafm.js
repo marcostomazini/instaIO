@@ -17,6 +17,12 @@ function PhotoCtrl($scope) {
 	$scope.linkInstagram = function(photo) {		
   		return "http://instagram.com/" + photo.user.username;
   	}
+	
+	$scope.remove=function(photo){ 
+		var index=$scope.photos.indexOf(photo)
+		$scope.photos.splice(index, 1);  
+		$scope.socket.emit('array new', photo);
+	}
 
 	$scope.socket.on('bootstrap', function(photos) {
 		$scope.$apply(function(scope) {
@@ -33,11 +39,23 @@ function PhotoCtrl($scope) {
 	});
 	
 	$scope.socket.on('one call', function(photo) {
+		//alert(photo.id);
 		$(".toggle").fadeOut(2000, function(){
-			shuffle($scope.photos);		
-			$scope.$apply(function(scope){			
-				scope.photos.push(photo);								
-			});				
+			var currentIndex = $scope.photos.length, temporaryValue, randomIndex;
+			// While there remain elements to shuffle...
+			while (0 !== currentIndex) {
+
+				// Pick a remaining element...
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex -= 1;
+
+				// And swap it with the current element.
+				temporaryValue = $scope.photos[currentIndex];
+				$scope.photos[currentIndex] = $scope.photos[randomIndex];
+				$scope.photos[randomIndex] = temporaryValue;
+			}
+
+			$scope.$apply();
 			$(".toggle").delay(3000).fadeIn(2000);
 		});
 	});
@@ -46,23 +64,4 @@ function PhotoCtrl($scope) {
 		window.location.reload();
 	})
 
-}
-
-function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
-
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
 }
