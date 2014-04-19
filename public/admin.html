@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>InstaIO: Instagram photos based in InstaO</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="admin.css">
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular-sanitize.min.js"></script>
+	<script src="maringafm.js"></script>
+
+</head>
+
+<body ng-app>
+	
+	<header>
+		<h3>InstaIO</h3>
+		<p>The real-time feed of Instagram for festivals or events. Monitored by ArquitetaWeb.</p>
+	</header>
+
+	<div class="main">
+		<div ng-controller="PhotoCtrl">  
+			<section class="photo" ng-repeat="photo in photos | orderBy: byCreatedTime">
+				<div class="photos">
+					<img ng-src="{{photo.images.thumbnail.url}}"></img>
+					<!--<time>{{photo.created_time}}</time>-->
+					<a ng-href="{{photo.link}}">
+						<p class="caption">{{photo.caption.text}}</p>
+					</a>
+				</div>			
+					<div class="avatar" title="{{photo.user.full_name}}">
+						<a ng-href="http://www.instagram.com/{{photo.user.username}}">											
+							<img ng-src="{{photo.user.profile_picture}}">
+						</a>
+					</div>	
+			</section>      
+			
+		</div>
+	</div><!-- .main -->
+
+	<footer>
+		<div class="foot"> 
+			Developer <a href="http://twitter.com/marcos_tomazini">@marcos_tomazini</a>.<br/>
+			Credits <a href="http://twitter.com/ivarvong">@ivarvong</a>.			 
+		</div> 
+	</footer>
+
+</body>
+</html>

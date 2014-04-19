@@ -11,8 +11,8 @@
 
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular-sanitize.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular-sanitize.min.js"></script>
 		<script src="maringafm.js"></script>
 
 	</head>
@@ -23,8 +23,8 @@
 			<div>  			
 				<section class="photo">
 					<!--<img src="{{photo.images.standard_resolution.url}}"></img>-->
-					<img class="toggle" src="{{photos[0].images.low_resolution.url}}"></img>
-					<time>{{photos[0].isoTime}}</time>
+					<img class="toggle" ng-src="{{photos[0].images.low_resolution.url}}"></img>
+					<!--<time>{{photos[0].isoTime}}</time>-->
 				</section> 
 			</div>
 		</div><!-- .main -->

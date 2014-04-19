@@ -58,40 +58,12 @@ update_tag_media = (object_id) ->
 		if nenhumNovo == 0
 			io.sockets.emit 'one call', photo
 
-update_geo_media = (object_id) ->
-	console.log('update_geo_media')
-	instagram.getGeoMedia object_id, (err, data) ->
-		console.log('update_geo_media err', err)
-		for photo in data.data
-			insert_if_new(photo)
-		#console.log('geo', data)
-
-app.get '/notify', (req, res) -> # confirm the subscription
-	if req.query and req.query['hub.mode'] is 'subscribe'
-		console.log "Confirming new Instagram real-time subscription for #{req.params.id} with #{req.query['hub.challenge']}"
-		res.send req.query['hub.challenge'] 
-	else
-		console.log "Weird request to /notify, didn't have a hub.mode..."
-		res.send 'OK'
-
-app.post '/notify/:id', (req, res) -> # receive the webhook, we got a new photo!
-	console.log 'Notification for', req.params.id # '. Had', notifications.length, 'item(s). Subscription ID:', req.body[0].subscription_id
-	console.log req.body
-	for notification in req.body
-		update_tag_media(notification.object_id) if notification.object is "tag"	        
-		update_geo_media(notification.object_id) if notification.object is "geography"	        
-	res.send 'OK'
-
-app.get '/one', (req, res) -> # 
-	res.sendfile './public/one.html'
-
 app.get '/barracauniversitaria', (req, res) -> # 
 	tagName = 'barracauniversitariaoriginal2014'	
 	res.sendfile './public/maringafm.html'
 
-app.get '/maringafm', (req, res) -> # 
-	tagName = 'maringafm'	
-	res.sendfile './public/maringafm.html'
+app.get '/admin', (req, res) -> # 
+	res.sendfile './public/admin.html'
 	
 app.get '/add/:tagname', (req, res) -> # 
 	console.log 'Notification for', req.params.tagname
@@ -104,11 +76,8 @@ app.get '/clear', (req, res) -> # delete array
 	last_set = []
 	res.send 'CLEAR OK'
 	
-#update_geo_media('1615218')
 update_tag_media(tagName)
 
 setInterval ->
-	#console.log(last_set.length, "last_set length")
-	#update_geo_media('3503334')
 	update_tag_media(tagName)
 , 15000

@@ -1,0 +1,72 @@
+header {	
+	margin-bottom: 5px;
+	background: #333;
+	color: #EEE;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+	position: fixed;
+	width: 100%;
+	font-weight: 300;
+	overflow: hidden;
+	height: 44px;
+	line-height: 44px;	
+}
+
+header h3 {
+	display: inline-block;	
+	padding: 3px;
+	padding-left: 6px;
+	margin: 0;
+	font-size: 20px;
+}
+
+header p {
+	display: inline;
+	margin: 0;
+	font-size: 14px;
+}
+
+.main {
+	padding-top: 44px;
+}
+
+.photo {
+	width: 200px;
+	padding: 5px;
+	display: inline-block;	
+	height: 250px;
+	overflow: hidden;
+	position: relative;
+}
+.photos img {
+	width: 200px;
+	height: 200px;
+}
+
+.caption {
+	font-size: 12px;
+}
+
+footer {
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+	padding: 10px;
+	font-size: 12px;
+	background: #B1ADAD;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+}
+
+.foot {
+	font-size: 12px;
+}
+
+.avatar {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.avatar img {
+	width: 66px;
+	border-radius: 38px;	
+}
