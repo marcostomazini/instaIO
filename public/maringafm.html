@@ -1,42 +1,41 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-	<title>Barraca - Maringá FM</title>
+	<head>
+		<title>Barraca - Maringá FM</title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
 
-	<link rel="stylesheet" href="normalize.css">
-	<link rel="stylesheet" href="maringafm.css">
+		<link rel="stylesheet" href="normalize.css">
+		<link rel="stylesheet" href="maringafm.css">
 
-	<script src="/socket.io/socket.io.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular-sanitize.min.js"></script>
-	<script src="maringafm.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular-sanitize.min.js"></script>
+		<script src="maringafm.js"></script>
 
-</head>
+	</head>
 
-<body ng-app>
+	<body ng-app ng-controller="PhotoCtrl">
 
-	<div class="main">
-		<div ng-controller="PhotoCtrl">  
-			
-			<section class="photo">
-				<!--<img src="{{photo.images.standard_resolution.url}}"></img>-->
-				<img src="{{photos[0].images.low_resolution.url}}"></img>
-				<time>{{photos[0].isoTime}}</time>
-			</section> 
-		</div>
-	</div><!-- .main -->
+		<div class="main">
+			<div>  			
+				<section class="photo">
+					<!--<img src="{{photo.images.standard_resolution.url}}"></img>-->
+					<img class="toggle" src="{{photos[0].images.low_resolution.url}}"></img>
+					<time>{{photos[0].isoTime}}</time>
+				</section> 
+			</div>
+		</div><!-- .main -->
 
-	<footer>
-		<div class="foot" ng-controller="PhotoCtrl"> 
-			<a href="{{photos[0].link}}">
-				<p class="caption">{{photos[0].caption.text}}</p>
-			</a>
-		</div> 
-	</footer>
+		<footer class="toggle">
+			<div class="foot"> 
+				<a href="{{photos[0].link}}">
+					<p class="caption">{{photos[0].caption.text}}</p>
+				</a>
+			</div> 
+		</footer>
 
-</body>
+	</body>
 </html>

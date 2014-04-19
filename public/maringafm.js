@@ -15,12 +15,12 @@ function PhotoCtrl($scope) {
 	$scope.socket.on('bootstrap', function(photos) {
 		//console.log('bootstrap', photos);
 		$scope.$apply(function(scope) {
-			scope.photos = photos;
+			scope.photos = photos;			
 		});
 	});	
 
 	$scope.socket.on('new', function(photo) {
-		//console.log('new', photo);	
+		console.log('new', photo);	
 		//$scope.photos.pop();
 		//$scope.photos.slice(1, -1);
 		$scope.photos.shift();
@@ -29,14 +29,14 @@ function PhotoCtrl($scope) {
 		});
 	});
 	
-	$scope.socket.on('random', function(photo) {
-		//console.log('new', photo);	
-		//$scope.photos.pop();
-		//$scope.photos.slice(1, -1);
-		$scope.photos.shift();
-		shuffle($scope.photos);		
-		$scope.$apply(function(scope){			
-			scope.photos.push(photo);			
+	$scope.socket.on('one call', function(photo) {
+		$(".toggle").fadeOut(2000, function(){
+			shuffle($scope.photos);		
+			$scope.$apply(function(scope){			
+				scope.photos.push(photo);								
+			});				
+			//$(".photo").delay(1000).fadeIn(2000);
+			$(".toggle").delay(3000).fadeIn(2000);
 		});
 	});
 

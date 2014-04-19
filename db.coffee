@@ -5,6 +5,7 @@ io = require('socket.io').listen(server)
 instagram = require './instagram'
 
 last_set = []
+nenhumNovo = 0
 
 process.env.CLIENT_ID = '464ed34dfbb2461584b9b7667128b6e3'
 process.env.CLIENT_SECRET = 'de3e0b55b80b4ac49a04f72153ef3ced'	
@@ -44,18 +45,18 @@ insert_if_new = (photo) ->
 		console.log("+ YES new: #{photo.id}")
 		last_set.push photo
 		io.sockets.emit 'new', photo
+		nenhumNovo = 1
 	else
-		#last_set.splice photo
-		#io.sockets.emit 'random', photo
 		console.log("- NOT new: #{photo.id}")
 
 update_tag_media = (object_id) ->
+	nenhumNovo = 0
 	console.log('update_tag_media ' + object_id)
 	instagram.getTagMedia object_id, (err, data) ->
 		for photo in data.data
 			insert_if_new(photo)		
-		#insert_if_new(data.data[0])
-		console.log('tag', data.length)
+		if nenhumNovo == 0
+			io.sockets.emit 'one call', photo
 
 update_geo_media = (object_id) ->
 	console.log('update_geo_media')
